@@ -9,6 +9,13 @@ pip install field-envelope-encrypt
 ```
 
 ## Usage
+Using the library is simple. Just decorate your SQLAlchemy model with `@encrypt_fields` and append `_encrypted` to the field name you want to encrypt. The library will automatically encrypt and decrypt the field for you.
+
+### Column Type
+By default, the column type storing the encrypted data must support serialization of the python `dict` type. If that is not possible, a custom serializer can be provided.
+
+
+### Example
 ```python
 from sqlalchemy import Integer, String, JSON
 from sqlalchemy.ext.declarative import declarative_base
@@ -37,3 +44,6 @@ user.password = "password123"       # It's a secret to everyone!
 session.add(user)
 session.commit()
 ```
+
+## Custom Serializer
+If the default serializer does not work for your use case, you can provide a custom serializer to the `@encrypt_fields` decorator. The user-supplied serializer must implement the `Serializer` interface. The `Serializer` interface has two methods: `serialize` and `deserialize`. The `serialize` method should take a python `dict` and return a serializable object. The `deserialize` method should take a serializable object and return a python `dict`.
