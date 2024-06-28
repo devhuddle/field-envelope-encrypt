@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "field-envelope-encrypt"
+dynamic = ["version"]
+authors = [
+  { name="DevHuddle, Inc", email="sayhello@devhuddle.ai" }
+]
+description = "A field envelope encryption library for Python"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "cryptography>42.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "sqlalchemy"
+]
+
+[project.urls]
+Homepage = "https://github.com/devhuddle/field-envelope-encrypt"
+Issues = "https://github.com/devhuddle/field-envelope-encrypt/issues"
+
+[tool.setuptools_scm]
