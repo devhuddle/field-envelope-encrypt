@@ -101,7 +101,7 @@ def _encrypt_fields(cls, kek: str, dict_transformer: Any | None = None):
 
     return cls
 
-def encrypt_fields(kek: str, dict_transformer: BaseTransformer | None = None):
+def encrypt_fields(kek: str, transformer: BaseTransformer | None = None):
     """
     A decorator that provides encryption for fields that end in "_encrypted".
 
@@ -111,6 +111,6 @@ def encrypt_fields(kek: str, dict_transformer: BaseTransformer | None = None):
     When using the class, instead of
     """
     def encrypted_fields_inner(cls):
-        return _encrypt_fields(cls, kek=kek, dict_transformer=dict_transformer)
+        return _encrypt_fields(cls, kek=kek, dict_transformer=transformer)
 
     return encrypted_fields_inner
