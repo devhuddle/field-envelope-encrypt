@@ -3,6 +3,8 @@
 ## Overview
 This library provides a simple class decorator that will encrypt and decrypt fields on an SQLAlchemy model. This is useful when you want to encrypt certain fields on a model but still want to abstract the details of encryption from the rest of the application.
 
+[Blog post](https://devhuddle.ai/envelope-encryption-for-sqlalchemy-fields/) for those interested in a deeper dive.
+
 ### Envelope Encryption
 Under the hood, envelope encryption is used to ensure that the data is encrypted securely. The library uses the `cryptography` library to handle the encryption and decryption of the fields. A user-supplied Key Encryption Key (KEK) is used to encrypt the Data Encryption Key (DEK), which in turn is used to encrypt the data. The DEK is stored alongside the encrypted data in the database.
 
